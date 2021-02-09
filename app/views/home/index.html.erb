@@ -8,7 +8,7 @@
     <span><%= dummy %></span>
   <% end %>
   <div data-reflex-permanent>
-    <iframe id="iframe-one" data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+    <iframe id="iframe-one" data-reflex-permanent src="https://loremflickr.com/<%= rand(500) + 100 %>/240"></iframe>
     Random number in data-reflex-permanent: <%= rand(100) %>
   </div>
   <hr>
@@ -22,7 +22,7 @@
     <span><%= dummy %></span>
   <% end %>
   <div id="wrapper-two" data-reflex-permanent><!-- added id -->
-    <iframe data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+    <iframe id="iframe-two" data-reflex-permanent src="https://loremflickr.com/<%= rand(500) + 100 %>/240"></iframe>
     Random number in data-reflex-permanent: <%= rand(100) %>
   </div>
   <hr>
@@ -37,8 +37,8 @@
       <span><%= dummy %></span>
     <% end %>
   </div>
-  <div id="wrapper-two" data-reflex-permanent>
-    <iframe data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+  <div id="wrapper-three" data-reflex-permanent>
+    <iframe id="iframe-three"  data-reflex-permanent src="https://loremflickr.com/<%= rand(500) + 100 %>/240"></iframe>
     Random number in data-reflex-permanent: <%= rand(100) %>
   </div>
   <hr>
@@ -54,8 +54,8 @@
     <% end %>
   </div>
   <%= rand(100) %>
-  <div id="wrapper-two" data-reflex-permanent>
-    <iframe data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+  <div id="wrapper-four" data-reflex-permanent>
+    <iframe id="iframe-four"  data-reflex-permanent src="https://loremflickr.com/<%= rand(500) + 100 %>/240"></iframe>
     Random number in data-reflex-permanent: <%= rand(100) %>
   </div>
   <hr>
