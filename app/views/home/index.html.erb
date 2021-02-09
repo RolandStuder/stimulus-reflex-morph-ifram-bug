@@ -1,5 +1,58 @@
-<button data-reflex="click->Example#test">Test</button>
+<h1>iFrame Bug</h1>
 
-<% if @stimulus_reflex %>
-  <h1>Success! Random: <%= (rand * 100).to_i %></h1>
-<% end %>
+<div id="one" data-reflex-root="#one">
+  <h2>1: Adding nodes refreshed iframe, removing them not.</h2>
+  <button data-reflex="click->Example#add">Add node</button>
+  <button data-reflex="click->Example#remove">Remove node</button><br>
+  <% session[:dummies].each do |dummy| %>
+    <span><%= dummy %></span>
+  <% end %>
+  <div data-reflex-permanent>
+    <iframe id="iframe-one" data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+  </div>
+  <hr>
+</div>
+
+<div id="two" data-reflex-root="#two">
+  <h2>2: Adding id to iframe wrapper also makes refresh on remove</h2>
+  <button data-reflex="click->Example#add">Add node</button>
+  <button data-reflex="click->Example#remove">Remove node</button><br>
+  <% session[:dummies].each do |dummy| %>
+    <span><%= dummy %></span>
+  <% end %>
+  <div id="wrapper-two" data-reflex-permanent><!-- added id -->
+    <iframe data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+  </div>
+  <hr>
+</div>
+
+<div id="three" data-reflex-root="#three">
+  <h2>3: Wrapping list so, so no siblings to iframe parent are added, -> no refresh</h2>
+  <button data-reflex="click->Example#add">Add node</button>
+  <button data-reflex="click->Example#remove">Remove node</button><br>
+  <div><!-- added wrapper div around elements that get added -->
+    <% session[:dummies].each do |dummy| %>
+      <span><%= dummy %></span>
+    <% end %>
+  </div>
+  <div id="wrapper-two" data-reflex-permanent>
+    <iframe data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+  </div>
+  <hr>
+</div>
+
+<div id="four" data-reflex-root="#four">
+  <h2>4: Having a non identifiable sibling node makes no difference. It depends on whether there are new nodes or not.</h2>
+  <button data-reflex="click->Example#add">Add node</button>
+  <button data-reflex="click->Example#remove">Remove node</button><br>
+  <div><!-- added wrapper div around elements that get added -->
+    <% session[:dummies].each do |dummy| %>
+      <span><%= dummy %></span>
+    <% end %>
+  </div>
+  <%= rand(100) %>
+  <div id="wrapper-two" data-reflex-permanent>
+    <iframe data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+  </div>
+  <hr>
+</div>
