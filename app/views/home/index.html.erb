@@ -9,6 +9,7 @@
   <% end %>
   <div data-reflex-permanent>
     <iframe id="iframe-one" data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+    Random number in data-reflex-permanent: <%= rand(100) %>
   </div>
   <hr>
 </div>
@@ -22,6 +23,7 @@
   <% end %>
   <div id="wrapper-two" data-reflex-permanent><!-- added id -->
     <iframe data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+    Random number in data-reflex-permanent: <%= rand(100) %>
   </div>
   <hr>
 </div>
@@ -37,6 +39,7 @@
   </div>
   <div id="wrapper-two" data-reflex-permanent>
     <iframe data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+    Random number in data-reflex-permanent: <%= rand(100) %>
   </div>
   <hr>
 </div>
@@ -53,6 +56,26 @@
   <%= rand(100) %>
   <div id="wrapper-two" data-reflex-permanent>
     <iframe data-reflex-permanent src="https://loremflickr.com/320/240"></iframe>
+    Random number in data-reflex-permanent: <%= rand(100) %>
   </div>
   <hr>
 </div>
+
+<div id="five" data-reflex-root="#five">
+  <h2>5: Actually is not iFrame specific, look at the inspector, something happens to the #wrapper-five.</h2>
+  <p>To be more exct, the elment is not really morphed, then contents do not change, but the nodes are
+  somehow touched, which is what probably triggers the iframe refresh.</p>
+  <button data-reflex="click->Example#add">Add node</button>
+  <button data-reflex="click->Example#remove">Remove node</button><br>
+  <%= rand(100) %>
+  <% session[:dummies].each do |dummy| %>
+    <span><%= dummy %></span>
+  <% end %>
+
+  <div id="wrapper-five" data-reflex-permanent>
+    <div id="iframe-five">I am not an iframe</div>
+    Random number in data-reflex-permanent: <%= rand(100) %>
+  </div>
+  <hr>
+</div>
+
