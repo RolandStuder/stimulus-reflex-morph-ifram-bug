@@ -4,7 +4,6 @@ class ExampleReflex < ApplicationReflex
   delegate :uuid, to: :connection
 
   def add
-    session[:dummies] ||= []
     session[:dummies]  << "hello ##{session[:dummies].size}"
   end
 
